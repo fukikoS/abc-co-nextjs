@@ -121,6 +121,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground leading-normal;
   }
+}
+
+.text-line2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 2; /* ← 行数指定 */
+  line-clamp: 2; /* ← 行数指定 */
+  overflow: hidden;
 }

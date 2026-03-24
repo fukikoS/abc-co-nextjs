@@ -12,7 +12,7 @@ export default async function ArticlesList() {
   })) as unknown as BlogListResponse
   console.log(data)
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch justify-center">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[3%] items-stretch justify-center">
       {data.contents.map((article) => (
         <ArticleCard key={article.id} article={article} />
       ))}
