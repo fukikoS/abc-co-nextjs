@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 const notoSansJP = Noto_Sans_JP({
@@ -23,11 +24,12 @@ export default function RootLayout({
       <body
         className={`${notoSansJP.variable}`}
       >
-        <div className="min-h-screen">
+        <div className="flex min-h-screen flex-col">
           <Navbar />
-          <div className="mx-auto w-full max-w-5xl px-4 py-6">
+          <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
             {children}
           </div>
+          <Footer />
         </div>
       </body>
     </html>

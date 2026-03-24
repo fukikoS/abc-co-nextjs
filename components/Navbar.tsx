@@ -3,6 +3,16 @@ import Link from "next/link"
 import { client } from "@/lib/microcms-client"
 import type { BlogCategory, BlogListResponse } from "@/lib/blog-types"
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+
 export default async function Navbar() {
   const data = (await client.get({
     endpoint: "blogs",
@@ -22,18 +32,57 @@ export default async function Navbar() {
           News Site
         </Link>
 
-        <nav aria-label="カテゴリナビ" className="flex items-center gap-4 text-sm">
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={`/${category.id}`}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {category.name ?? category.id}
-            </Link>
-          ))}
-        </nav>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="w-40">
+                {categories.map((category) => (
+                  <li key={category.id} className="w-full">
+                    <Link
+                      href={`/${category.id}`}
+                      className="text-muted-foreground transition-colors hover:text-foreground w-full"
+                    >
+                      {category.name ?? category.id}
+                    </Link>
+                  </li>
+                ))}
+
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <Link href="/docs">Docs</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+            
+
       </div>
     </header>
   )
 }
+
+// function ListItem({
+//   title,
+//   children,
+//   href,
+//   ...props
+// }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+//   return (
+//     <li {...props}>
+//       <NavigationMenuLink asChild>
+//         <Link href={href}>
+//           <div className="flex flex-col gap-1 text-sm">
+//             <div className="leading-none font-medium">{title}</div>
+//             <div className="line-clamp-2 text-muted-foreground">{children}</div>
+//           </div>
+//         </Link>
+//       </NavigationMenuLink>
+//     </li>
+//   )
+// }
