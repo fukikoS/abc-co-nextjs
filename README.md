@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ABC Co. Next.js
 
-## Getting Started
+Next.js 16 + microCMS で構築されたコーポレートサイトです。
 
-First, run the development server:
+> **Note:** これはポートフォリオ用に作成した架空の企業サイトです。作中に登場する「ABC Co.」等の会社名・サービス内容・採用情報は実在しません。
+
+## 技術スタック
+
+- [Next.js 16](https://nextjs.org)（App Router）
+- [React 19](https://react.dev)
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS 4](https://tailwindcss.com) / [shadcn](https://ui.shadcn.com)・[radix-ui](https://www.radix-ui.com)
+- [microcms-js-sdk](https://github.com/microcmsio/microcms-js-sdk)（記事・カテゴリ・求人・お問い合わせの取得/登録）
+- [Resend](https://resend.com)（お問い合わせ通知メール送信）
+
+## ディレクトリ構成
+
+```
+app/
+  page.tsx                 トップページ
+  blog/                    ブログ一覧・カテゴリ別一覧・記事詳細
+  updates/                 お知らせ一覧
+  company/                 会社概要
+  service/                 サービス紹介
+  recruit/                 採用情報一覧・詳細
+  contact/                 お問い合わせフォーム・送信完了
+  (legal)/                 プライバシーポリシー・利用規約
+components/                共通UIコンポーネント（記事カード、ナビ、もっと見るボタンによる追加読み込み等）
+lib/
+  microcms-client.ts        microCMSクライアント・共通データ取得関数
+  cms-types.ts               microCMSのコンテンツ型定義
+  utils.ts                   汎用ユーティリティ
+constants.ts                 サイト名・サイトURLなどのサイト全体設定
+```
+
+## セットアップ
+
+### 1. 依存関係のインストール
+
+```bash
+npm install
+```
+
+### 2. 環境変数の設定
+
+プロジェクトルートに `.env` を作成し、以下の値を設定してください。
+
+| 変数名 | 用途 |
+| --- | --- |
+| `MICROCMS_SERVICE_DOMAIN` | microCMSのサービスドメイン |
+| `NEXT_PUBLIC_MICROCMS_API_KEY` | microCMSのAPIキー |
+| `RESEND_API_KEY` | Resendのお問い合わせ通知メール送信用APIキー |
+| `CONTACT_TO_EMAIL` | お問い合わせ通知の送信先メールアドレス |
+| `NEXT_PUBLIC_SITE_URL` | サイトの公開URL（未設定時は `http://localhost:3000`） |
+
+microCMSには以下のエンドポイントが必要です。
+
+- `blogs`：ブログ/お知らせ記事（`category`で`updates`とその他を区別）
+- `categories`：ブログカテゴリ一覧
+- `recruitments`：採用職種一覧
+- `contact`：お問い合わせ内容の保存先
+
+### 3. 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3040](http://localhost:3040) で確認できます（ポート3040で起動します）。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## その他のコマンド
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build   # 本番ビルド
+npm run start   # 本番サーバー起動
+npm run lint    # ESLint実行
+```

@@ -1,30 +1,39 @@
-import { client } from "@/lib/microcms-client";
 import { notFound } from "next/navigation";
-import styles from '../legal.module.css'
+import type { Metadata } from "next";
+import { SITE_NAME } from "@/constants";
+import PageTitle from "@/components/PageTitle";
 
-type TermsPageData = {
-  terms?: string;
-  contents?: Array<{
-    terms: string;
-  }>;
+const title = "利用規約";
+const description = `${SITE_NAME}の利用規約です。`;
+
+export const metadata: Metadata = {
+  title,
+  description,
+  openGraph: {
+    title: `${title} | ${SITE_NAME}`,
+    description,
+    url: "/terms",
+  },
+  twitter: {
+    title: `${title} | ${SITE_NAME}`,
+    description,
+  },
 };
 
-export default async function TermsPage() {
-  const data = (await client.get({
-    endpoint: "pages",
-  })) as TermsPageData;
 
-  const content = data.terms ?? data.contents?.[0]?.terms;
+export default async function Page() {
 
-  if (!content) {
-    notFound();
-  }
 
   return (
-    <main className={`${styles.legal} mx-auto w-full max-w-4xl px-4 py-10`}>
-      <article className="prose prose-neutral max-w-none dark:prose-invert">
-        <h1>利用規約</h1>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+    <main className="container mx-auto w-full max-w-4xl px-4 py-10">
+      <PageTitle en="Terms of Service" ja="利用規約" />
+      <article className="prose bg-white p-6 md:px-10 md:py-12 rounded-2xl prose-neutral max-w-none">
+        <p>
+          本サイトはポートフォリオ掲載用に制作した架空のコーポレートサイトです。記載されている会社情報、サービス内容、各種規約はすべてデモ・サンプルとして作成したものであり、実在の企業・団体・サービスとは関係ありません。
+        </p>
+        <p>
+          このページはデザインおよびページ構成の再現を目的としたサンプルです。実際の利用規約としての効力はなく、いかなる契約条件も定めるものではありません。
+        </p>
       </article>
     </main>
   );
