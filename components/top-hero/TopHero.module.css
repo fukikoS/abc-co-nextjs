@@ -1,0 +1,116 @@
+.heroLogo {
+  animation: fill-animation 0.5s forwards linear 2.5s;
+}
+
+.heroLogo path:nth-child(1) {
+  stroke-dasharray: 380px;
+  stroke-dashoffset: 380px;
+  animation: line-animation 2.1s forwards linear;
+}
+.heroLogo path:nth-child(2) {
+  stroke-dasharray: 440px;
+  stroke-dashoffset: 440px;
+  animation: line-animation 2s forwards linear;
+}
+.heroLogo path:nth-child(3) {
+  stroke-dasharray: 372px;
+  stroke-dashoffset: 372px;
+  animation: line-animation 1.2s forwards linear;
+}
+.heroLogo path:nth-child(4) {
+  stroke-dasharray: 372px;
+  stroke-dashoffset: 372px;
+  animation: line-animation 1.4s forwards linear;
+}
+.heroLogo path:nth-child(5) {
+  stroke-dasharray: 302px;
+  stroke-dashoffset: 302px;
+  animation: line-animation 2s forwards linear;
+}
+.heroLogo path:nth-child(6) {
+  stroke-dasharray: 61px;
+  stroke-dashoffset: 61px;
+  animation: 0.4s line-animation 2s forwards linear;
+}
+
+@keyframes line-animation {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill-animation {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: #2c50b7;
+  }
+}
+
+.bgOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: #ffffff;
+  pointer-events: none;
+  animation: bg-overlay-fade-out 1.4s ease forwards;
+  animation-delay: 3.6s;
+}
+
+@keyframes bg-overlay-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.subtitleLine {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fade-up-animation 0.8s ease forwards;
+}
+
+.subtitleLine:nth-child(1) {
+  animation-delay: 3s;
+}
+
+.subtitleLine:nth-child(2) {
+  animation-delay: 3.3s;
+}
+
+@keyframes fade-up-animation {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2回目以降の訪問ではアニメーションをスキップし、完了状態を即座に表示する */
+.animationDone .heroLogo {
+  animation: none;
+  fill: #2c50b7;
+}
+
+.animationDone .heroLogo path {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+
+.animationDone .bgOverlay {
+  animation: none;
+  opacity: 0;
+}
+
+.animationDone .subtitleLine {
+  animation: none;
+  opacity: 1;
+  transform: translateY(0);
+}
+

@@ -3,7 +3,7 @@ import type { BlogArticle } from "@/lib/cms-types"
 import CategorySection from '@/components/CategorySection'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import TopHero from '@/components/TopHero'
+import TopHero from '@/components/top-hero/TopHero'
 import ServiceSection from '@/components/ServiceSection'
 
 const fetchBlogs = (category: string) =>
