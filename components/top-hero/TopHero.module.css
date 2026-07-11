@@ -1,3 +1,129 @@
+.floatCard {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: var(--w, 104px);
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 16px 32px rgba(44, 80, 183, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  animation:
+    card-fade-in 0.9s ease forwards var(--card-delay, 3.6s),
+    card-float 7s ease-in-out infinite var(--float-delay, 4.5s);
+}
+
+.cardTag {
+  width: 22px;
+  height: 6px;
+  border-radius: 999px;
+  background: #2c50b7;
+}
+
+.cardLine {
+  display: block;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(44, 80, 183, 0.25);
+}
+
+.cardLineShort {
+  width: 65%;
+}
+
+.floatCard1 {
+  --rot: -8deg;
+  --w: 177px;
+  top: 20%;
+  left: 14%;
+}
+
+.floatCard2 {
+  --rot: 6deg;
+  --w: 114px;
+  --card-delay: 3.9s;
+  --float-delay: 4.8s;
+  top: 24%;
+  right: 16%;
+}
+
+.floatCard3 {
+  --rot: -5deg;
+  --w: 201px;
+  --card-delay: 4.2s;
+  --float-delay: 5.1s;
+  bottom: 22%;
+  left: 15%;
+}
+
+.floatCard4 {
+  --rot: 9deg;
+  --w: 141px;
+  --card-delay: 4.5s;
+  --float-delay: 5.4s;
+  bottom: 24%;
+  right: 14%;
+}
+
+@media (max-width: 767px) {
+  .floatCard {
+    padding: 8px 10px;
+    gap: 4px;
+    border-radius: 10px;
+  }
+
+  .floatCard1 {
+    --w: 86px;
+    top: 7%;
+    left: 3%;
+  }
+
+  .floatCard2 {
+    --w: 60px;
+    top: 13%;
+    right: 3%;
+  }
+
+  .floatCard3 {
+    --w: 94px;
+    bottom: 9%;
+    left: 4%;
+  }
+
+  .floatCard4 {
+    --w: 68px;
+    bottom: 15%;
+    right: 3%;
+  }
+}
+
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotate(var(--rot, 0deg)) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--rot, 0deg)) scale(1);
+  }
+}
+
+@keyframes card-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-12px) rotate(calc(var(--rot, 0deg) + 3deg));
+  }
+}
+
 .heroLogo {
   animation: fill-animation 0.5s forwards linear 2.5s;
 }
@@ -48,25 +174,6 @@
   }
 }
 
-.bgOverlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  background: #ffffff;
-  pointer-events: none;
-  animation: bg-overlay-fade-out 1s ease forwards;
-  animation-delay: 5s;
-}
-
-@keyframes bg-overlay-fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 .subtitleLine {
   opacity: 0;
   transform: translateY(12px);
@@ -103,14 +210,14 @@
   stroke-dashoffset: 0;
 }
 
-.animationDone .bgOverlay {
-  animation: none;
-  opacity: 0;
-}
-
 .animationDone .subtitleLine {
   animation: none;
   opacity: 1;
   transform: translateY(0);
+}
+
+.animationDone .floatCard {
+  opacity: 1;
+  animation: card-float 7s ease-in-out infinite;
 }
 

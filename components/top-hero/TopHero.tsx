@@ -18,7 +18,26 @@ export default function TopHero() {
 
   return (
     <section ref={sectionRef} className="hero relative text-center h-[calc(100vh-65px)] grid grid-cols-[minmax(0,1fr)] place-items-center overflow-hidden">
-      <div className={styles.bgOverlay} aria-hidden="true" />
+      <div className={`${styles.floatCard} ${styles.floatCard1}`} aria-hidden="true">
+        <span className={styles.cardTag} />
+        <span className={styles.cardLine} />
+        <span className={`${styles.cardLine} ${styles.cardLineShort}`} />
+      </div>
+      <div className={`${styles.floatCard} ${styles.floatCard2}`} aria-hidden="true">
+        <span className={styles.cardTag} />
+        <span className={styles.cardLine} />
+        <span className={`${styles.cardLine} ${styles.cardLineShort}`} />
+      </div>
+      <div className={`${styles.floatCard} ${styles.floatCard3}`} aria-hidden="true">
+        <span className={styles.cardTag} />
+        <span className={styles.cardLine} />
+        <span className={`${styles.cardLine} ${styles.cardLineShort}`} />
+      </div>
+      <div className={`${styles.floatCard} ${styles.floatCard4}`} aria-hidden="true">
+        <span className={styles.cardTag} />
+        <span className={styles.cardLine} />
+        <span className={`${styles.cardLine} ${styles.cardLineShort}`} />
+      </div>
       <div className="hero__content relative z-10 w-150 max-w-full -top-5">
         <div className="p-4">
         <svg className={`${styles.heroLogo} w-full h-auto`} width="456" height="82" viewBox="0 0 456 82" fill="none" xmlns="http://www.w3.org/2000/svg">
