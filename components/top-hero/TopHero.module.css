@@ -55,7 +55,7 @@
   background: #ffffff;
   pointer-events: none;
   animation: bg-overlay-fade-out 1.4s ease forwards;
-  animation-delay: 3.6s;
+  animation-delay: 5s;
 }
 
 @keyframes bg-overlay-fade-out {
