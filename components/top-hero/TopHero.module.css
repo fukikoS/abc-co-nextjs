@@ -54,7 +54,7 @@
   z-index: 1;
   background: #ffffff;
   pointer-events: none;
-  animation: bg-overlay-fade-out 1.4s ease forwards;
+  animation: bg-overlay-fade-out 1s ease forwards;
   animation-delay: 5s;
 }
 
