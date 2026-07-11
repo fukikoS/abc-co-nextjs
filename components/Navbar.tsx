@@ -17,7 +17,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 shadow backdrop-blur ">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <Link href="/" className="font-black text-3xl">
-          <span className="text-main-blue">ABC Co</span>.
+          <span className="text-main-blue">ABC Co.</span>
         </Link>
 
         <nav className="hidden md:flex">
