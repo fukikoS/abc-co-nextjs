@@ -13,7 +13,7 @@ export default function Footer() {
               href="/"
               className="font-medium text-foreground underline-offset-4 transition-colors hover:underline"
             >
-              News Site
+              ABC Co.
             </Link>
           </p>
           <nav aria-label="Legal links">
