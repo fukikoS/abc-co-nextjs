@@ -9,8 +9,9 @@ Next.js 16 + microCMS で構築されたコーポレートサイトです。
 - [Next.js 16](https://nextjs.org)（App Router）
 - [React 19](https://react.dev)
 - [TypeScript](https://www.typescriptlang.org)
-- [Tailwind CSS 4](https://tailwindcss.com) / [shadcn](https://ui.shadcn.com)・[radix-ui](https://www.radix-ui.com)
+- [Tailwind CSS 4](https://tailwindcss.com)
 - [microcms-js-sdk](https://github.com/microcmsio/microcms-js-sdk)（記事・カテゴリ・求人・お問い合わせの取得/登録）
+- [lucide-react](https://lucide.dev)（アイコン）
 - [Resend](https://resend.com)（お問い合わせ通知メール送信）
 
 ## ディレクトリ構成
@@ -29,7 +30,6 @@ components/                共通UIコンポーネント（記事カード、ナ
 lib/
   microcms-client.ts        microCMSクライアント・共通データ取得関数
   cms-types.ts               microCMSのコンテンツ型定義
-  utils.ts                   汎用ユーティリティ
 constants.ts                 サイト名・サイトURLなどのサイト全体設定
 ```
 
@@ -38,7 +38,7 @@ constants.ts                 サイト名・サイトURLなどのサイト全体
 ### 1. 依存関係のインストール
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 2. 環境変数の設定
@@ -63,7 +63,7 @@ microCMSには以下のエンドポイントが必要です。
 ### 3. 開発サーバーの起動
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 [http://localhost:3040](http://localhost:3040) で確認できます（ポート3040で起動します）。
@@ -71,7 +71,7 @@ npm run dev
 ## その他のコマンド
 
 ```bash
-npm run build   # 本番ビルド
-npm run start   # 本番サーバー起動
-npm run lint    # ESLint実行
+pnpm build   # 本番ビルド
+pnpm start   # 本番サーバー起動
+pnpm lint    # ESLint実行
 ```

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import ArticlesList from './ArticlesList'
 import type { BlogListResponse } from '@/lib/cms-types'
-import { Arrow } from 'radix-ui/internal'
 import { ArrowRight } from 'lucide-react'
 
 interface CategorySectionProps {
