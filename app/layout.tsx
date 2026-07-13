@@ -28,9 +28,17 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     siteName: SITE_NAME,
     url: SITE_URL,
+    images: [
+      {
+        url: "/ogp-blue.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/ogp-blue.png"],
   },
   // favicon
   icons: {

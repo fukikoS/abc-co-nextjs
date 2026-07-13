@@ -41,7 +41,7 @@ export async function generateMetadata(
   }
 
   const description = article.description ?? toDescription(article.content)
-  const ogImage = article.eyecatch?.url
+  const ogImage = article.eyecatch?.url ?? '/ogp-blue.png'
 
   return {
     title: article.title,
@@ -53,13 +53,13 @@ export async function generateMetadata(
       url: `/blog/${category}/${id}`,
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
-      images: ogImage ? [{ url: ogImage }] : undefined,
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${article.title} | ${SITE_NAME}`,
       description,
-      images: ogImage ? [ogImage] : undefined,
+      images: [ogImage],
     },
   }
 }

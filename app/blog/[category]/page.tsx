@@ -26,10 +26,12 @@ export async function generateMetadata({
       title: `${title} | ${SITE_NAME}`,
       description,
       url: `/blog/${category}`,
+      images: [{ url: "/ogp-blue.png", width: 1200, height: 630 }],
     },
     twitter: {
       title: `${title} | ${SITE_NAME}`,
       description,
+      images: ["/ogp-blue.png"],
     },
   };
 }
