@@ -2,6 +2,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import UpdatesPagination from "@/components/UpdatesPagination"
 import { BlogArticle } from "@/lib/cms-types"
+import { formatDate } from "@/lib/format-date"
 import { client } from "@/lib/microcms-client"
 import type { Metadata } from "next";
 import { SITE_NAME } from "@/constants";
@@ -74,7 +75,7 @@ export default async function Updates({
                   <div className="md:flex items-center gap-4">
                     {article.publishedAt && (
                       <time className="text-sm md:text-md w-30 text-slate-500" dateTime={article.publishedAt}>
-                        {new Date(article.publishedAt).toLocaleDateString()}
+                        {formatDate(article.publishedAt)}
                       </time>
                     )}
                     <h2 className="md:text-lg font-semibold text-slate-900">{article.title}</h2>

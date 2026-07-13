@@ -2,6 +2,7 @@ import { cache } from 'react'
 import { client } from '@/lib/microcms-client'
 import { notFound } from 'next/navigation'
 import type { BlogArticle } from "@/lib/cms-types"
+import { formatDate } from "@/lib/format-date"
 import ArticlesList from '@/components/ArticlesList';
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -108,11 +109,7 @@ export default async function Page({
           </Link>
           <h1 className='heading1 mt-3'>{article.title}</h1>
           <time dateTime={article.publishedAt}>
-            {new Date(article.publishedAt!).toLocaleDateString('ja-JP', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-            }).replaceAll('/', '.')}
+            {formatDate(article.publishedAt!)}
           </time>
         </div>
         <div className=' '>

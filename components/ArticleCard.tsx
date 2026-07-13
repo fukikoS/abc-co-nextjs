@@ -9,6 +9,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import type { BlogArticle } from "@/lib/cms-types"
+import { formatDate } from "@/lib/format-date"
 import defaultEyecatch from "@/public/img/image1.png"
 
 export default function ArticleCard({ article, displayDate = false }: { article: BlogArticle; displayDate?: boolean }) {
@@ -35,7 +36,7 @@ export default function ArticleCard({ article, displayDate = false }: { article:
           <p className="mt-3 text-sm md:text-base">{slicedArticleDescription}</p>
           {displayDate && article.publishedAt && (
             <p className="text-sm text-muted-foreground mt-2">
-              {new Date(article.publishedAt).toLocaleDateString()}
+              {formatDate(article.publishedAt)}
             </p>
           )}
         </div>

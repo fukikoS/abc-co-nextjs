@@ -1,5 +1,6 @@
 import { client, getCategories } from '@/lib/microcms-client'
 import type { BlogArticle } from "@/lib/cms-types"
+import { formatDate } from "@/lib/format-date"
 import CategorySection from '@/components/CategorySection'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
@@ -47,7 +48,7 @@ export default async function Home() {
                       <div className="md:flex items-center gap-4">
                         {article.publishedAt && (
                           <time className="text-sm md:text-md w-30 text-slate-500" dateTime={article.publishedAt}>
-                            {new Date(article.publishedAt).toLocaleDateString()}
+                            {formatDate(article.publishedAt)}
                           </time>
                         )}
                         <h2 className="md:text-lg font-semibold text-slate-900">{article.title}</h2>
